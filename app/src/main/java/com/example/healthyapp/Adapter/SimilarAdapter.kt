@@ -11,12 +11,14 @@ import com.bumptech.glide.Glide
 import com.example.healthyapp.Domain.ItemsDomain
 import com.example.healthyapp.R
 
-class SimilarAdapter (items : ArrayList<ItemsDomain>) : RecyclerView.Adapter<SimilarAdapter.ViewHolder>() {
+class SimilarAdapter(items: ArrayList<ItemsDomain>) :
+    RecyclerView.Adapter<SimilarAdapter.ViewHolder>() {
     val items = items
-    lateinit var context : Context
+    lateinit var context: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
-        val inflate = LayoutInflater.from(parent.context).inflate(R.layout.viewholder_similar, parent, false)
+        val inflate =
+            LayoutInflater.from(parent.context).inflate(R.layout.viewholder_similar, parent, false)
         return ViewHolder(inflate)
     }
 
@@ -35,6 +37,7 @@ class SimilarAdapter (items : ArrayList<ItemsDomain>) : RecyclerView.Adapter<Sim
 
     class ViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {
         var pic: ImageView
+
         init {
             pic = itemView.findViewById(R.id.similarViewImg)
         }

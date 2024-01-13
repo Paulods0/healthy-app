@@ -48,7 +48,8 @@ class DetailActivity : AppCompatActivity() {
 
     private fun initSimilar() {
         recyclerViewSimilar = binding.similarView
-        recyclerViewSimilar.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewSimilar.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         similarAdapter = SimilarAdapter(MainActivity().getData())
         recyclerViewSimilar.adapter = similarAdapter

@@ -23,6 +23,7 @@ class BestDealAdapter(itemsArr: ArrayList<ItemsDomain>) :
             .inflate(R.layout.viewholder_best_deal, parent, false)
         return ViewHolder(inflate)
     }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.titleTxt.text = items[position].title
         holder.priceTxt.text = items[position].price.toString() + "$/kg"
