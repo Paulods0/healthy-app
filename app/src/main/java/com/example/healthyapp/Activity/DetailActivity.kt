@@ -65,7 +65,7 @@ class DetailActivity : AppCompatActivity() {
             .load(drawableResourceId)
             .into(itemImg)
 
-        priceKgTxt.text = "$/Kg${obj.price}"
+        priceKgTxt.text = "${obj.price}$/kg"
         titleTxt.text = obj.title
         description.text = obj.description
         ratingTxt.text = "(${obj.rate})"
