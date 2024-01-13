@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="183dp"
+    android:layout_height="235dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/grey_background"
+    android:layout_margin="8dp"
+    android:elevation="3dp">
+
+    <ImageView
+        android:id="@+id/favBtn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/favorite_green"
+        />
+
+    <ImageView
+        android:id="@+id/bestDealViewHolderImg"
+        android:layout_width="0dp"
+        android:layout_height="133dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/favBtn" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/bestDealViewHolderImg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/white_background"
+        android:layout_margin="4dp"
+        >
+
+        <TextView
+            android:id="@+id/bestDealTitleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:text="Title"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textview21"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/bestDealpriceTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$/kg"
+            android:textSize="15sp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textview21"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/titleTxt"
+            />
+
+        <TextView
+            android:id="@+id/textview21"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:text="+"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/plus_best_deal_background"
+            android:layout_marginRight="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
