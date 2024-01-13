@@ -15,32 +15,25 @@ import com.example.healthyapp.R
 
 class BestDealAdapter(itemsArr: ArrayList<ItemsDomain>) :
     RecyclerView.Adapter<BestDealAdapter.ViewHolder>() {
-
     val items: ArrayList<ItemsDomain> = itemsArr
     private lateinit var context: Context
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
         val inflate = LayoutInflater.from(parent.context)
             .inflate(R.layout.viewholder_best_deal, parent, false)
         return ViewHolder(inflate)
     }
-
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.titleTxt.text = items[position].title
         holder.priceTxt.text = items[position].price.toString() + "$/kg"
-
         val drawableResourceId = holder.itemView.resources.getIdentifier(
             items[position].imgPath,
             "drawable",
             holder.itemView.context.packageName
         )
-
         Glide.with(context)
             .load(drawableResourceId)
             .into(holder.pic)
-
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("object", items[position])

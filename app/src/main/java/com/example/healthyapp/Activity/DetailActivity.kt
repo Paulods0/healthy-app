@@ -1,18 +1,14 @@
 package com.example.healthyapp.Activity
 
-import android.app.Activity
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.healthyapp.Domain.ItemsDomain
 import com.example.healthyapp.databinding.ActivityDetailBinding
-import java.io.Serializable
 
 class DetailActivity : AppCompatActivity() {
 
@@ -40,7 +36,6 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityDetailBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         getBundles()
@@ -58,25 +53,25 @@ class DetailActivity : AppCompatActivity() {
             .load(drawableResourceId)
             .into(itemImg)
 
-        priceKgTxt.text = obj.price.toString()
+        priceKgTxt.text = "$${obj.price}"
         titleTxt.text = obj.title
         description.text = obj.description
-        ratingTxt.text = "(" + obj.rate + ")"
-        ratingBar.rating = obj.rate as Float
-
+        ratingTxt.text = "(${obj.rate})"
+        ratingBar.rating = obj.rate.toFloat()
+        totalTxt.text = "$${(weight * obj.price)}"
         plusBtn.setOnClickListener {
             weight += 1
-            weightTxt.text = weight.toString() + " kg"
+            weightTxt.text = "$weight kg"
             val res = weight * obj.price
-            totalTxt.text = res.toString()
+            totalTxt.text = "$${res}"
         }
 
         minusBtn.setOnClickListener {
             if (weight > 1) {
                 weight -= 1
-                weightTxt.text = weight.toString() + " kg"
+                weightTxt.text = "$weight kg"
                 val res = weight * obj.price
-                totalTxt.text = res.toString()
+                totalTxt.text = "$${res}"
             }
         }
     }
@@ -95,19 +90,8 @@ class DetailActivity : AppCompatActivity() {
         totalTxt = binding.totalTxt
     }
 
-
-    fun <T : Serializable?> getSerializable(activity: Activity, name: String, clazz: Class<T>): T {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-            activity.intent.getSerializableExtra(name, clazz)!!
-        else {
-            activity.intent.getSerializableExtra(name) as T
-        }
-    }
-
     private fun getBundles() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            obj = intent.getSerializableExtra("object", ItemsDomain::class.java)
-                ?: throw IllegalArgumentException("Object cannot be null")
-        }
+        obj = intent.extras?.getSerializable("object", ItemsDomain::class.java)!!
     }
+
 }
