@@ -5,8 +5,10 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.healthyapp.Adapter.SimilarAdapter
 import com.example.healthyapp.Domain.ItemsDomain
 import com.example.healthyapp.databinding.ActivityDetailBinding
 
@@ -41,6 +43,15 @@ class DetailActivity : AppCompatActivity() {
         getBundles()
         initView()
         setVariable()
+        initSimilar()
+    }
+
+    private fun initSimilar() {
+        recyclerViewSimilar = binding.similarView
+        recyclerViewSimilar.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        similarAdapter = SimilarAdapter(MainActivity().getData())
+        recyclerViewSimilar.adapter = similarAdapter
     }
 
     private fun setVariable() {
@@ -53,7 +64,7 @@ class DetailActivity : AppCompatActivity() {
             .load(drawableResourceId)
             .into(itemImg)
 
-        priceKgTxt.text = "$${obj.price}"
+        priceKgTxt.text = "$/Kg${obj.price}"
         titleTxt.text = obj.title
         description.text = obj.description
         ratingTxt.text = "(${obj.rate})"

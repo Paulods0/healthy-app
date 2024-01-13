@@ -8,7 +8,7 @@
     android:layout_marginTop="12dp"
     android:background="@drawable/light_green_background2">
     <ImageView
-        android:id="@+id/catViewHolderImg"
+        android:id="@+id/similarViewImg"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="parent"
